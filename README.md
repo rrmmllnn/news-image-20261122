@@ -1,5 +1,9 @@
 # news-image-20261122 — Round 3: "One Day on Earth"
 
+[![make.fun](https://make.fun/badge/news-image-20261122.svg)](https://make.fun/bounty/news-image-20261122)
+[![rank](https://make.fun/badge/news-image-20261122/rrmmllnn/news-image-20261122/rank.svg)](https://make.fun/bounty/news-image-20261122)
+[![reward](https://make.fun/badge/news-image-20261122/rrmmllnn/news-image-20261122/reward.svg)](https://make.fun/bounty/news-image-20261122)
+
 A dotted world-map poster of Sunday 22 November 2026. A dot-matrix world
 map carries numbered red pins at the places where the day's stories
 happened; below it, a numbered headline list matches the pins. The date is
