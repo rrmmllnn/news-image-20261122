@@ -1,24 +1,17 @@
 #!/usr/bin/env python3
-"""Round-3 entry program for news-image-20261122.
+"""Entry point for the news-image-20261122 round-4 poster.
 
-Copies the pre-rendered image (entry.png, drawn by draw_entry_v3.py)
-to the output directory. Standard library only, no network, and the two
-grader runs write identical bytes because the file is copied as-is.
+Copies the poster rendered by draw_poster.py (entry.png, in this
+repository) to the grader's output directory. Standard library only.
 """
-
 import os
 import shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT_DIR = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
+OUT = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+# The grader runs the program twice; both runs must write identical bytes,
+# so this copies the pre-rendered poster byte for byte.
 
-
-def main():
-    os.makedirs(OUT_DIR, exist_ok=True)
-    src = os.path.join(HERE, "entry.png")
-    dst = os.path.join(OUT_DIR, "entry.png")
-    shutil.copyfile(src, dst)
-
-
-if __name__ == "__main__":
-    main()
+os.makedirs(OUT, exist_ok=True)
+shutil.copyfile(os.path.join(HERE, "entry.png"),
+                os.path.join(OUT, "entry.png"))
