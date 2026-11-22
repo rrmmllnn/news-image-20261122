@@ -1,135 +1,185 @@
-#!/usr/bin/env python3
-"""news-image-20261122 entry: write the composed front page to /output/entry.png.
+"""Sunday front page, 22 November 2026.
 
-The image (entry.png, 1024x1024, PNG) sums up Sunday 22 November 2026's
-world news in one picture. Six stories fill the front page:
-
-1. Russia's second overnight barrage on Ukraine in three nights: 496
-   drones and 53 missiles, at least 5 killed and 10 injured; four die
-   in Lviv, one in Zaporizhzhia; defences down 439 drones and 39
-   missiles.
-2. COP31 nears a final deal on Sunday: a new package is put to nearly
-   200 nations in Antalya after talks ran two days past their deadline,
-   with an approval vote set for Sunday morning.
-3. Iran's IRGC claims missile and drone strikes on two US Patriot
-   radars at bases in Bahrain; Bahrain says it stopped the attacks.
-4. Hong Kong votes for its Election Committee: 856 candidates contest
-   723 seats for the committee that picks the city's next leader.
-5. UN talks on autonomous weapons fall short: no enforceable rules,
-   as states split over binding limits.
-6. The footer carries four more: Myanmar shaken by a 4.1 quake in the
-   early hours, Estonia to seal its border with Russia, Zelenskyy
-   repeats his call for NATO membership, and Trump says an Iran deal
-   could last 20 years.
-
-The lead panel's night-skyline art was generated as a flat editorial
-illustration; the other panels are drawn illustrations and all text is
-rendered by Pillow (draw_entry.py), so the page reads as one coherent
-front page instead of six unrelated pictures. The image was composed at
-1024x1024 and kept under the 1 MiB cap. `main.py` copies the bundled
-`entry.png` to `/output/entry.png`, so two runs write identical bytes —
-it never redraws, never fetches anything, and never rolls a die.
+This entry is a single-page newspaper front page that sums up the
+world news of Sunday 22 November 2026. The artwork itself lives in
+entry.png next to this script: a 1024 by 1024 PNG, kept under one
+mebibyte. This program never draws anything. It only hands out an
+exact copy of that bundled picture, so every run produces the very
+same bytes. Use --verify to inspect the bundled file, --stories to
+see what the page covers, or run it plain to write the copy out.
 """
+
 import argparse
 import hashlib
-import os
-import shutil
 import struct
 import sys
+from pathlib import Path
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = os.path.join(HERE, "entry.png")
-DEFAULT_DST = "/output/entry.png"
-MAX_BYTES = 1024 * 1024
+
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
-# A complete PNG ends with a 12-byte IEND chunk: zero length, the ASCII
-# tag "IEND", and its CRC. Checking the tail catches a truncated file
-# that still has a valid header and IHDR dimensions.
-PNG_IEND_TAIL = b"\x00\x00\x00\x00IEND\xaeB`\x82"
+IEND_TAIL = b"\x00\x00\x00\x00IEND\xaeB`\x82"
+EXPECTED_WIDTH = 1024
+EXPECTED_HEIGHT = 1024
+SIZE_LIMIT = 1024 * 1024
 
-STORIES = [
-    "Second overnight barrage hits Ukraine: 496 drones, 53 missiles, at least 5 killed, 10 injured; four die in Lviv, one in Zaporizhzhia",
-    "COP31 nears a final deal on Sunday: new package to nearly 200 nations after two days of overtime",
-    "Iran claims strikes on US Patriot radars: IRGC says missiles and drones hit two radars in Bahrain",
-    "Hong Kong votes for Election Committee: 856 candidates contest 723 seats",
-    "UN talks on killer robots fall short: no enforceable rules on autonomous weapons",
-    "Also: Myanmar 4.1 quake, Estonia to seal border with Russia, Zelenskyy repeats NATO call, Trump says Iran deal could last 20 years",
+HEADLINES = [
+    (
+        "Overnight barrage over Ukraine",
+        "Russia launched its second overnight barrage on Ukraine in "
+        "three nights, firing 496 drones and 53 missiles. At least "
+        "5 people were killed and 10 injured; four died in Lviv and "
+        "one in Zaporizhzhia. Ukrainian defences brought down 439 "
+        "drones and 39 missiles.",
+    ),
+    (
+        "COP31 in Antalya closes in on a deal",
+        "Climate talks in Antalya are nearing a final deal on Sunday. "
+        "Negotiators put a new package to nearly 200 nations after "
+        "the talks ran two days past their deadline, with an approval "
+        "vote set for Sunday morning.",
+    ),
+    (
+        "IRGC claim over Bahrain bases",
+        "Iran's IRGC claims it carried out missile and drone strikes "
+        "on two US Patriot radars at bases in Bahrain, while Bahrain "
+        "says it stopped the attacks.",
+    ),
+    (
+        "Hong Kong picks its Election Committee",
+        "Hong Kong is voting for its Election Committee, with 856 "
+        "candidates contesting 723 seats on the committee that picks "
+        "the city's next leader.",
+    ),
+    (
+        "UN talks on autonomous weapons fall short",
+        "United Nations talks on autonomous weapons, the so-called "
+        "\"killer robots\", ended without any enforceable rules, with "
+        "states split over binding limits.",
+    ),
+    (
+        "Also on the page",
+        "Myanmar was shaken by a 4.1 quake in the early hours; "
+        "Estonia is to seal its border with Russia; Zelenskyy repeats "
+        "his call for NATO membership; and Trump says an Iran deal "
+        "could last 20 years.",
+    ),
 ]
 
 
-def read_png(path):
-    """Return the bytes of a file after checking it is a PNG."""
-    with open(path, "rb") as f:
-        data = f.read()
-    if data[:8] != PNG_SIGNATURE:
-        raise ValueError(f"{path} is not a PNG file")
-    return data
+def bundled_picture() -> Path:
+    """Return the path of the picture shipped beside this script."""
+    return Path(__file__).resolve().parent / "entry.png"
 
 
-def png_dimensions(data):
-    """Read width and height from the PNG IHDR chunk."""
-    if len(data) < 33 or data[12:16] != b"IHDR":
-        raise ValueError("entry.png has no IHDR chunk")
-    width, height = struct.unpack(">II", data[16:24])
+def fingerprint(data: bytes) -> str:
+    """Return the hex SHA-256 digest of some bytes."""
+    return hashlib.sha256(data).hexdigest()
+
+
+def read_dimensions(blob: bytes) -> tuple[int, int]:
+    """Pull width and height out of the PNG IHDR chunk."""
+    if len(blob) < 24:
+        raise ValueError("file is too short to hold a PNG header")
+    width, height = struct.unpack(">II", blob[16:24])
     return width, height
 
 
-def verify(data):
-    """Check the bundled image against the competition's caps.
-
-    The rules cap the image at 1 MiB and 1024 by 1024 pixels; anything
-    larger is refused by the gate before judging, so this fails loudly
-    here instead of silently submitting a bad file. The IEND tail check
-    also rejects a truncated file whose header still looks fine.
-    """
-    if len(data) > MAX_BYTES:
-        raise ValueError(f"entry.png is {len(data)} bytes, over the 1 MiB cap")
-    width, height = png_dimensions(data)
-    if (width, height) != (1024, 1024):
-        raise ValueError(f"entry.png is {width}x{height}, expected 1024x1024")
-    if not data.endswith(PNG_IEND_TAIL):
-        raise ValueError("entry.png is truncated: missing the IEND chunk")
-    return width, height
-
-
-def print_stories():
-    """List the six stories the front page carries."""
-    print("stories on the front page:")
-    for i, story in enumerate(STORIES, 1):
-        print(f"  {i}. {story}")
+def inspect_bundle(blob: bytes) -> tuple[int, int, int, str]:
+    """Check the bundled picture and return width, height, size, digest."""
+    if not blob.startswith(PNG_SIGNATURE):
+        raise ValueError("bundled file does not start with the PNG magic bytes")
+    if len(blob) > SIZE_LIMIT:
+        raise ValueError(f"bundled file is over the 1 MiB limit ({len(blob)} bytes)")
+    # The first chunk after the 8-byte signature must be IHDR; without
+    # it the width/height bytes at offset 16 would be meaningless.
+    if blob[12:16] != b"IHDR":
+        raise ValueError("bundled file's first chunk is not IHDR")
+    width, height = read_dimensions(blob)
+    if (width, height) != (EXPECTED_WIDTH, EXPECTED_HEIGHT):
+        raise ValueError(
+            f"expected a {EXPECTED_WIDTH}x{EXPECTED_HEIGHT} image, "
+            f"found {width}x{height}"
+        )
+    if not blob.endswith(IEND_TAIL):
+        raise ValueError("bundled file does not end with a valid PNG IEND chunk")
+    return width, height, len(blob), fingerprint(blob)
 
 
-def main(argv=None):
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", default=DEFAULT_DST,
-                        help="where to write the copy (default: %(default)s)")
-    parser.add_argument("--verify", action="store_true",
-                        help="check the bundled image and exit without writing")
-    parser.add_argument("--stories", action="store_true",
-                        help="list the six stories and exit without writing")
-    args = parser.parse_args(argv)
+def show_stories() -> None:
+    """Print the six stories the front page covers."""
+    for index, (title, body) in enumerate(HEADLINES, start=1):
+        print(f"{index}. {title}")
+        print(f"   {body}")
 
-    if args.stories:
-        print_stories()
-        return 0
-    data = read_png(SRC)
-    width, height = verify(data)
-    digest = hashlib.sha256(data).hexdigest()
-    if args.verify:
-        print(f"entry.png OK: {width}x{height}, {len(data)} bytes, sha256 {digest}")
-        print_stories()
-        return 0
-    os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
-    shutil.copyfile(SRC, args.output)
-    # Re-read the copy and confirm it matches the source byte for byte;
-    # a short write (full disk, interrupted copy) must not pass silently.
-    written = read_png(args.output)
-    if hashlib.sha256(written).hexdigest() != digest:
-        raise ValueError(f"{args.output} does not match the bundled image")
-    print(f"wrote {args.output} {len(data)} bytes sha256 {digest}")
-    print_stories()
+
+def verify_only() -> int:
+    """Run the checks, report the findings, and write nothing."""
+    blob = bundled_picture().read_bytes()
+    width, height, size, digest = inspect_bundle(blob)
+    print(f"image: {bundled_picture().name}")
+    print(f"dimensions: {width}x{height}")
+    print(f"size: {size} bytes")
+    print(f"sha256: {digest}")
+    print("checks passed: PNG signature, 1024x1024, <= 1 MiB, IEND present")
+    print()
+    print("Stories on the front page:")
+    show_stories()
     return 0
 
 
+def hand_out_copy(destination: Path) -> int:
+    """Copy the bundled picture to destination and confirm it matches."""
+    source = bundled_picture()
+    blob = source.read_bytes()
+    inspect_bundle(blob)
+    source_digest = fingerprint(blob)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_bytes(blob)
+    written = destination.read_bytes()
+    if fingerprint(written) != source_digest:
+        raise ValueError(
+            f"copy mismatch: wrote {destination} but its SHA-256 "
+            "does not match the bundled image; refusing to claim success"
+        )
+    print(f"wrote {destination} ({len(written)} bytes, sha256 {source_digest})")
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Hand out a copy of the 22 November 2026 front page."
+    )
+    parser.add_argument(
+        "--output",
+        default="/output/entry.png",
+        help="where to write the copy (default: /output/entry.png)",
+    )
+    parser.add_argument(
+        "--verify",
+        action="store_true",
+        help="check the bundled image and list its stories, without writing",
+    )
+    parser.add_argument(
+        "--stories",
+        action="store_true",
+        help="print the six stories covered and exit",
+    )
+    return parser
+
+
+def main(argv=None) -> int:
+    options = build_parser().parse_args(argv)
+    if options.stories:
+        show_stories()
+        return 0
+    if options.verify:
+        return verify_only()
+    return hand_out_copy(Path(options.output))
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except (OSError, ValueError) as problem:
+        print(f"error: {problem}", file=sys.stderr)
+        sys.exit(1)
