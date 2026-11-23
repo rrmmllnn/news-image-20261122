@@ -1,33 +1,48 @@
+# The World in One Day — Timeline
+
 [![make.fun · news-image-20261122](https://make.fun/badge/news-image-20261122.svg)](https://make.fun/bounty/news-image-20261122)
 [![rank](https://make.fun/badge/news-image-20261122/rrmmllnn/news-image-20261122/rank.svg)](https://make.fun/bounty/news-image-20261122/leaderboard)
 [![reward](https://make.fun/badge/news-image-20261122/rrmmllnn/news-image-20261122/reward.svg)](https://make.fun/bounty/news-image-20261122)
 
-# The World in One Day — Sunday 22 November 2026
-
-Round 5 entry for [Sum up 22 November's world news in one image](https://make.fun/bounty/news-image-20261122) ($100, make.fun).
+**Bounty:** [Sum up 22 November's world news in one image — news-image-20261122](https://make.fun/c/news-image-20261122) ($100, make.fun)
 
 ## The image
 
-A poster, **"The World in One Day"**, that sums up Sunday 22 November 2026 in six illustrated frames — a different design from the newspaper front page of round 4. Each frame is a flat-illustration scene with a place tag, a headline, and a two-line summary, so a viewer who missed the day can tell what happened from the image alone.
+A lead story plus a vertical timeline spine: COP31's collapse in Antalya
+leads the page, then five more stories run down a timeline from dawn in
+Libya to night in Nigeria — six stories, one day, each with its place,
+headline and one short summary, so a viewer who missed the day can grasp
+what happened from the image alone.
 
-1. **Antalya · Climate — COP31 collapses.** The UN climate summit in Antalya ends with no deal after the EU rejects a pact with no mention of fossil fuels; the longest COP ever.
-2. **Ukraine · War — Drone hits Kyiv flats.** A Russian drone brings down part of a five-storey block in Dymer, Kyiv region; 14 people are missing. A strike on Kryvyi Rih kills two, a boy of seven among them.
-3. **Indonesia · Disaster — 36 missing in factory fire.** Rescuers search the burnt candy factory in Cikande; three are dead and fifteen were pulled out alive.
-4. **Seoul · Education — Minister quits over AI cheating.** South Korea's education chief resigns after last-minute anti-cheating rules sow chaos at the college entrance exam (CSAT).
-5. **Bahrain · The Gulf — Two hurt as Iran hits US bases.** Bahrain reports injuries after Tehran claims missile and drone strikes on US Patriot radars; a tanker convoy readies to sail.
-6. **Yemen · Red Sea — Missiles over Riyadh.** Saudi defences intercept Houthi missiles aimed at the capital as fresh strikes hit Yemen's port of Hodeidah.
+1. **COP31 collapses — no climate pact** (Antalya, Turkiye): after two
+   weeks of talks the summit ends with no agreement; the final text drops
+   fossil fuels and the EU, UK and allies walk away.
+2. **Russian warship sunk** (Benghazi, Libya): sea drones hit the
+   corvette Merkury at dawn; only its bow stayed above water.
+3. **Drone flattens Kyiv flats** (Dymer, Ukraine): a Russian drone hit a
+   five-storey block; 14 missing, six killed across the Kyiv region.
+4. **Iran strike wounds two** (Bahrain, the Gulf): Bahrain says an
+   Iranian strike hit a civilian site; two hurt, one critically.
+5. **Candy factory fire kills 3** (Cikande, Indonesia): fire swept a
+   candy factory in Banten; 36 still missing as rescuers search.
+6. **Funeral boat toll hits 24** (Bayelsa, Nigeria): NEMA confirmed 24
+   dead after the crowded boat capsized en route to a burial.
 
-Every story happened, or was first reported, on Sunday 22 November 2026. Sources: CNN, Reuters, AP, Korea JoongAng Daily, KBS, Greenpeace.
+Sources: CNN, UN News, Reuters, AP, Gulf News, NEMA. Every story happened
+or was first reported on Sunday 22 November 2026.
 
 ## How it is built
 
-`draw_poster.py` draws the poster with Pillow (no network, deterministic) and writes `entry.png` (1024×1024, under 1 MiB). `main.py` is the entry program: it copies `entry.png` to `/output/entry.png`, byte-identically, on every run.
+`draw_poster.py` draws `entry.png` (1024x1024, Pillow only, deterministic:
+fixed colours, fonts, geometry and text — no network, no randomness).
+`main.py` is the packed form of `copy_entry.py`: it copies `entry.png`
+byte-identically to `/output/entry.png` on every run.
 
 ```sh
-python3 draw_poster.py   # regenerate entry.png
-python3 main.py          # write /output/entry.png
+python3 draw_poster.py        # regenerate entry.png
+python3 main.py               # writes /output/entry.png
 ```
 
 ## License
 
-MIT — see `LICENSE`.
+MIT — see [LICENSE](LICENSE).
