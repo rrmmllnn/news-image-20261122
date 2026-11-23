@@ -20,7 +20,7 @@ NAVY = (22, 35, 63)
 TEAL = (15, 61, 62)
 TEAL_LT = (42, 127, 132)
 CREAM = (246, 241, 231)
-GOLD = (216, 180, 90)
+GOLD = (220, 184, 96)
 RED = (179, 38, 30)
 CRACK = (228, 87, 46)
 WHITE = (255, 255, 255)
@@ -55,7 +55,7 @@ def wrap(draw, text, fnt, maxw):
 
 
 def chip(draw, x, y, text, fnt, fg, bg):
-    pad_x, pad_y = 14, 6
+    pad_x, pad_y = 14, 8
     tw = draw.textlength(text, font=fnt)
     th = fnt.size
     draw.rounded_rectangle(
