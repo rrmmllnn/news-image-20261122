@@ -1,2 +1,76 @@
-#coding:l1
-import lzma;exec(lzma.decompress('\x000\0\0§%\0\0\0\0\0\0\0ˆ„àšB¾Šw`ŠÓÕ	ñ |qè\r³êÚÇ#9ùæhjšÌ¥æ`G•Q¢˜«:Æ2ã£B)P\\îa¼Sx&•¿Ã8šÌş¶ú´ŠY.Å^8şªŠ]Û¨†ñü¨±lÁ"˜N¨1\n}¯¬LÓä.¦šìÖíÁ#M*òAò$7HÄ~$VpVfÛ“t¤/`jŒ¢ç$“ğ×`ì3ıp¤¼“¦Énñ SÁ4×V]/3uÏU”èµÑ]Cz‡Æip©ÁêÉU­”Ÿ›£ZiV.¶œ­¾ìŸÿÖgK“[ívª…î¿ùĞòª4ÈºgLp*©}p¢s>“@™°í\rê‹‚ã-sèŒù\\ÍAP¯Pªw¶˜ƒù¢Öÿsp‡×­PJû˜ùJYø"¤“:ü½¤ÚìÖ\râRøæíÃ\rƒª³‘I|Tüı‹Ú¶Ñw¼¼çüÕ¬3î®öıÓclk?¬(W™«{†@ëğ>Ü¢í8AÑKc8â²	\nŠyg…¸šùÚø”Ûx —£í§{]^41È†ÃËïúZ6¤ÙĞ1Q¹êñÄïË	“¸a„q\\“\'Ûv­+ö5àNìCB¬­HÇÂ¼n€¶¬Z„\\˜F¨?ñù†	Z‰‘&ãĞ£™AHÃºg4|úX`×Â«[.? 8‡s²:õ5(lmII}H~”º¾P÷Äé²œÍyfëtğtši|Şô¤„uaÉYŞ-z=ÃÆš/Å©…Q­¤Œû®`î#ì½,!çÕ…:½ÂËÚ¾Õ3Dº¼és~ti¶´mÒù6Toİ²-pó4ÿÃ%ém’e4í{ÒuÒ^jfT$œª­tV«·ºèé¢S_EãÎ¦ÚtÈ¡ˆŒ0¼ôço•4yGUÜˆIR‹)@õGèw~#»#a*ó­¥‡F‹L2…™ü:ÄÃ\\ûõbŒ[ÿÀi:¼®sÇëŒ¾.ëÁıùƒ±¢t–¿*²[d*³E¤}a)\\µ0wuÕšuèŒ‡ç%õÅã²gÊÅ!Ë#ŒNŞ£²«ÃÓC—â•E…À7ÍB\\½9;M;ÁA£„iÏÿ Ii¡\\ƒ©<¸2ƒ»˜Ã5dŠJÉÅÑİ}Ph?Ê(9wLÌ¥\0Ë zh0ù=ÃîNzÏY~ùÑ3äîyT4hf½/aŠ>úĞéwdtÛÙ»m§®fKLÁ|æ·g— ›™?’Ùü`ä1N‚ÍÁ:ëéâÓ®µ»ªuĞ¯âª*Õ	ŞCZ_k.X4åÎÅWKÖµr¼Ë÷•	°åS3\r· û8ËÚõr©fbEk~÷OºÏÑÆÙİKR=&˜W²ˆf"…ùÄ×¹?\rL™ßº*Šì¡à·nÌ™:îÚúÑ•Ê]ùhØÖmqÖe,“ğ5%•–áÏ±æ½pOÖì	örşvªRî:–\0æ‹qW(NÀ¨„w	ûèÎšµ´FÅ‹ğÛYÖğU¯[!=ËŠúRõLˆô«†3¸KIĞıƒór¬}QŒ–mÕ*\0ÁòrX3TYğ.ğúêÔw¿|CT@¶x˜Å‰™èDÛ	åÿºŠöH×3ÿó%®Ç¦cƒ¡4 mLeN@Çu¡OzèÕ_ßŒ×R°à­ª‹Š\n¦†À™F¹¢Ä‘[™K~DÍpaOæÿx&5]\nï("å´ÍBûa—÷é\0ø¿Å	\0J1w™x¼,Âİ(_kwÁJ”\'9ùàv¿è*3Ë•{yğÕIp7Ëi¡ùnj—¦ÙÀÆÕVæíŞê¨û¥°Â³Fj	n¨ ßI|e}—ˆïŸ.†>0	èoØñ–ƒÆè)Â„ÅÑN—²\'äsS}Œ\x008(CT¤é9†ú–ã!‰Êğ’m°w<Áçá\nİÚsŞ•j?b’xJ¬Îû”:”¨½ÊÓò\'‹›ï>1¹s¤ĞLØ.rÂÌùëÉª®Öå.	•>åŸÉ²gæ˜é±°m¬Ë>¯>èâ–ä\\\'\r©°åò¼EãO¶äš‰¬[nÇIAùwE×aâÙ\\m)Ró±éÀ®™@­œÚšCîäK·/ejB¬3ìXøVÓôgî¶(Û`ø¹TYäÎû\nVÊ¡ş¢#zñ]3Í»lçäfûåÎ7gîÖ`M)×ŒŠ:ƒ4yHaSNH?88‚¦—Ş ²t\'WÈ¾“>X§0Xµ¤l,ßQµè¼LŞ¨W?.Æ:Åš=\\_‚[5c\0ÌîİŞÕ\nİ?€ß†n—>ü_¦$èØµ*Ášœ¦`Ö»r»Ó¬Â¯º±F÷9ğ ¦¢&ç¬­U\rŒkÌ–5\rv‚¡FvPH…eYH†ÈÖ\rWß±°Lì›B…™‚—jÚìg"§Ûï¼"qƒ°cÚ\\È-‰ŞJÊH5èQM(ŠêDˆ~\'1üËÉG÷p`Ü©@ó´¢²3—àÕ{¿óÔqQ8È¸2£2İ¡Bèİ6%´+ªòšn\nWã–j2MÉP%éQ â\0K3èY<HIT$2#õ¡ôÅr‹Û ¯†ÜÛspTÙäy=vöu;6ÙNH¹16Ú/,™V$ñ¹FñæmŠCÖ¸*0¸cé°ˆ!Ş‚ÔCº²›Še¾!õŞÎ¢m¼\\¨Bxyöî·`Œkê¾cz3Ø/»¸ü¶–VŠH#SSàUZ\n…Ö&³?áèà4Á05ß|À[G÷PzÙƒ?¶S\nÆ$,Ê4\rÖ8´\0tìÕ¶	™¤‹sIŠÃ,®–¡êÂÛàC˜a]2—	·ğË|hßgĞˆjšKù›*×÷©E36Ö39p°›³WŸ\n{iFo×!é¦‰ÆXRÒBâNÊG;Ò@ ¥ Ş4"±T}ß¡öZIQ=~«ğÄ,±-”¢¢r¢4òí±—[UŠÆÒû²àõ	¤ïºë!jIæÍ’½’Õt‰‘|±¿=^µYş#»ÀÆ*aÅÏ2Œ¤iõ`Ù’ùS¸P«Q”ˆ³ši\rlî´,aŸÕ!Xb‡¿w\r<p—^º°2œ®B<Ìİt¨sÇü®µLĞHŞª¨\\çâú>\'6Ÿà{ÆÕ„}È#QüáÚÌ_kÕL³ñJ/¼Óoˆª¾Óh·HA!W@Oú•®H+Â\0Å„+!·øïZB€ãøÁ9É0Ö/¦ Û÷»€ÃŞD­]Ş@‹ôkš\nïz÷ÎLdÚİşh£¿tMâ7UÖÁCÅ‡ß|@—áßõ9¦Ú9„’3íß(âÙ]SË7{Zé|Y:¬âôcı»Qcz€3q3±´¸æT‰óëçÖ’áEçdËÌp .¡ü‡/‚r•ŒTŞ:Bö·\nmŒ=õ¸)Ä‹²|µVÍ†CÁ-¥{†ªW¤dïëÙ¶ú®/Ûïïàºæ¬ˆ?èE„½¢š…,jV¨" x$Cıu6Ç«\\q4Ñ¨š"†eªÿ&°*`ÍzG?İPK˜Z?ªázQš¿ôb”#óUğİ´G»HÒ´½3‰ntƒ@…D¥9êÔ7\nõì"Ô“©9µ°Ë¢Àg;1CÏô‡œÖ¶™"]Œogõ}I.Ê¦Û&ä–ê!Ùôå‡Ñ²ßh,|Ô›qé{D¢à,¿[ƒÍgI~FùW»H=Å‡p~¤ÖVÕSiU[‘@Cçé±òU¾ßÔÜdıàÔ|h~0Ïİ3 l`nQ*Š–—{³âÔ¶_W{^`Ïàğ”lq«¨°Ô!¾™ç‹æİYš%Æ`äx§Ç›Çg,zÏ“äõ}¬á€˜)Ùª3F7¹œßœSbG%Ò¼•)Å¥]XQ¥	yK]_õÔLÏ‡fí”eˆ÷.ÌÔºğ½šŒs®x…êé¤Ôš®ópÉÏ"bç²"fZUÎ?6$ŒgNV®Ñ‹KŠÍµg·N÷şQAL¼5œ¬>­ïšÃhhÇ||ê©eà‹ÁXåÈB³Å×Xü;Cë,uÀ)éSîV¥Ámé6ÓÜ¬™J­.\nsµ/³ñíÔæ¨VËtáÌ¡äÅıö¬ú‹œÕ—lva£z<´=&Øh¹%ªƒ}ÜšÃ›õ¤A\'ä¯÷éãÈøXéU\'Ó×n<–íE#ˆó‘Ê<,z}•”z‰P/€ìÆîoL?‚9…öW_:vc„ÇúE,;ˆX7ø™e&ÒuÖ_Ó7tŸô|EuBã¦s%İÇÓM.é{áRÙSÍùH=Ç‡uÉtIK~¾©dØBßú2ìj“G«ü~:¾úeGæ\'ÊÛÄ±&Mq…ÀÔuê_?Sg¾}N'.encode('l1')))
+"""Round 8 entrypoint: validate the bundled poster and copy it out.
+
+The poster is pre-rendered and shipped next to this script as entry.png.
+This program only checks that file and copies it to the output directory
+named by MAKEFUN_OUTPUT_DIR. It never writes into the repository, it
+imports only the standard library, and it performs no network, clock or
+random access, so it runs identically on every deterministic run.
+"""
+
+import os
+import struct
+import sys
+
+PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
+EXPECTED_WIDTH = 1024
+EXPECTED_HEIGHT = 1024
+MAX_FILE_BYTES = 1024 * 1024
+IEND_TAIL = struct.pack(">I", 0) + b"IEND" + b"\xaeB`\x82"
+
+
+def fail(message):
+    sys.stderr.write("error: %s\n" % message)
+    return 1
+
+
+def read_poster(path):
+    with open(path, "rb") as handle:
+        return handle.read()
+
+
+def check_poster(data):
+    if len(data) > MAX_FILE_BYTES:
+        return "poster is %d bytes, over the 1 MiB limit" % len(data)
+    if data[:8] != PNG_SIGNATURE:
+        return "poster does not start with the PNG signature"
+    if len(data) < 33:
+        return "poster is too short to hold an IHDR chunk"
+    if data[12:16] != b"IHDR":
+        return "first chunk is not IHDR"
+    width, height = struct.unpack(">II", data[16:24])
+    if (width, height) != (EXPECTED_WIDTH, EXPECTED_HEIGHT):
+        return "poster is %dx%d, expected %dx%d" % (
+            width,
+            height,
+            EXPECTED_WIDTH,
+            EXPECTED_HEIGHT,
+        )
+    if not data.endswith(IEND_TAIL):
+        return "poster does not end with a valid IEND chunk"
+    return None
+
+
+def main():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    source_path = os.path.join(script_dir, "entry.png")
+    output_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
+    target_path = os.path.join(output_dir, "entry.png")
+
+    if not os.path.isfile(source_path):
+        return fail("bundled poster missing: %s" % source_path)
+
+    data = read_poster(source_path)
+    problem = check_poster(data)
+    if problem is not None:
+        return fail(problem)
+
+    os.makedirs(output_dir, exist_ok=True)
+    with open(target_path, "wb") as handle:
+        handle.write(data)
+
+    print("wrote %s (%d bytes)" % (target_path, len(data)))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
