@@ -1,48 +1,42 @@
-# The World in One Day — Timeline
+# The World in One Day — Sunday 22 November 2026
 
-[![make.fun · news-image-20261122](https://make.fun/badge/news-image-20261122.svg)](https://make.fun/bounty/news-image-20261122)
-[![rank](https://make.fun/badge/news-image-20261122/rrmmllnn/news-image-20261122/rank.svg)](https://make.fun/bounty/news-image-20261122/leaderboard)
-[![reward](https://make.fun/badge/news-image-20261122/rrmmllnn/news-image-20261122/reward.svg)](https://make.fun/bounty/news-image-20261122)
+Round 7 entry for the make.fun `news-image-20261122` competition: one image
+summing up the world's news of Sunday 22 November 2026.
 
-**Bounty:** [Sum up 22 November's world news in one image — news-image-20261122](https://make.fun/c/news-image-20261122) ($100, make.fun)
+## Design
 
-## The image
+A "Sunday briefing" digest, not a grid, a timeline or a newspaper page:
 
-A lead story plus a vertical timeline spine: COP31's collapse in Antalya
-leads the page, then five more stories run down a timeline from dawn in
-Libya to night in Nigeria — six stories, one day, each with its place,
-headline and one short summary, so a viewer who missed the day can grasp
-what happened from the image alone.
+- **Masthead** — the title and the date, Sunday 22 November 2026, so the day
+  the image sums up is named at once.
+- **Hero story** — the COP31 climate talks collapsing in Antalya, with a
+  cracked-globe illustration and a NO DEAL stamp.
+- **Five wire bands** — one story each, with a drawn pictogram, place,
+  headline and consequence:
+  1. COP31 collapse, Antalya, Türkiye (hero)
+  2. Russian corvette *Merkury* sunk by sea drones off Benghazi, Libya
+  3. Russian drone collapses an apartment block in Dymer, near Kyiv
+  4. Iran claims strikes on US bases in Bahrain; Bahrain says a civilian
+     plant was hit
+  5. Candy factory fire in Cikande, Indonesia — three dead, 36 missing
+  6. Boat carrying mourners capsizes in Bayelsa, Nigeria — at least 24 dead
 
-1. **COP31 collapses — no climate pact** (Antalya, Turkiye): after two
-   weeks of talks the summit ends with no agreement; the final text drops
-   fossil fuels and the EU, UK and allies walk away.
-2. **Russian warship sunk** (Benghazi, Libya): sea drones hit the
-   corvette Merkury at dawn; only its bow stayed above water.
-3. **Drone flattens Kyiv flats** (Dymer, Ukraine): a Russian drone hit a
-   five-storey block; 14 missing, six killed across the Kyiv region.
-4. **Iran strike wounds two** (Bahrain, the Gulf): Bahrain says an
-   Iranian strike hit a civilian site; two hurt, one critically.
-5. **Candy factory fire kills 3** (Cikande, Indonesia): fire swept a
-   candy factory in Banten; 36 still missing as rescuers search.
-6. **Funeral boat toll hits 24** (Bayelsa, Nigeria): NEMA confirmed 24
-   dead after the crowded boat capsized en route to a burial.
+Sources are named in the footer: Reuters, AP, AFP, CNN, Al Jazeera, as
+reported on Sunday 22 November 2026.
 
-Sources: CNN, UN News, Reuters, AP, Gulf News, NEMA. Every story happened
-or was first reported on Sunday 22 November 2026.
+## Run
 
-## How it is built
-
-`draw_poster.py` draws `entry.png` (1024x1024, Pillow only, deterministic:
-fixed colours, fonts, geometry and text — no network, no randomness).
-`main.py` is the packed form of `copy_entry.py`: it copies `entry.png`
-byte-identically to `/output/entry.png` on every run.
-
-```sh
-python3 draw_poster.py        # regenerate entry.png
-python3 main.py               # writes /output/entry.png
+```
+python3 main.py
 ```
 
-## License
+`main.py` draws the poster deterministically with Pillow (no network, no
+clock, no randomness) and writes `entry.png` next to itself and into
+`$MAKEFUN_OUTPUT_DIR` when that is set. Re-running produces identical bytes.
 
-MIT — see [LICENSE](LICENSE).
+## Files
+
+- `main.py` — the program that draws the poster
+- `entry.png` — the rendered poster (1024 × 1024, under 1 MiB)
+- `README.md` — this file
+- `LICENSE` — MIT
